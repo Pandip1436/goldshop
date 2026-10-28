@@ -4,8 +4,6 @@ coverage/
 .env
 .env.*
 !.env.example
-server/uploads/
-!server/uploads/.gitkeep
 playwright-report/
 test-results/
 e2e/.auth/

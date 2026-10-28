@@ -131,8 +131,8 @@ To test on your phone, open `http://<your-computer's-LAN-IP>:5173` on the same W
       WhatsApp, email, GSTIN, map link, social links. The order-number prefix is under Checkout.
 - [ ] **Replace demo content**: run `npm run seed:clear-demo`, then add your own products and
       photos. Demo images are CC0 museum and stock photos, not your products. Any image you
-      added for local preview from another company's website (for example the current homepage
-      banner photo, taken from thodoo.com) must be replaced or licensed before going public.
+      added for local preview from another company's website must be replaced or licensed
+      before going public.
 - [ ] **Policies** (Admin → Pages & policies): replace every `[bracketed]` placeholder and have them
       reviewed by your advisor.
 - [ ] **Gold rates** set for every purity you sell.
