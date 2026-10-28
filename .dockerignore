@@ -1,0 +1,11 @@
+**/node_modules
+**/dist
+server/uploads
+server/uploads-e2e
+server/.test-uploads
+**/.env
+**/.env.*
+!**/.env.example
+playwright-report
+test-results
+.git

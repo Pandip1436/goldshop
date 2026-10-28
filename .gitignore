@@ -1,0 +1,25 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+server/uploads/
+!server/uploads/.gitkeep
+playwright-report/
+test-results/
+e2e/.auth/
+e2e/screenshots/
+*.log
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+server/uploads-e2e/
+server/alt-uploads-e2e/
+server/.test-uploads/
+
+# This repository is the API only. The storefront (client/) and its browser tests are deployed
+# separately (Cloudflare Pages) and are not published here.
+client/
+e2e/
+playwright.config.ts

@@ -1,0 +1,15 @@
+# Files left out of `gcloud run deploy --source .` (Cloud Build). Mirrors .dockerignore.
+.git
+.gitignore
+**/node_modules
+**/dist
+server/uploads
+server/uploads-e2e
+server/alt-uploads-e2e
+server/.test-uploads
+**/.env
+**/.env.*
+!**/.env.example
+playwright-report
+test-results
+e2e

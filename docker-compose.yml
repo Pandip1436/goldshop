@@ -1,0 +1,38 @@
+# Production-like stack: the store (API, plus storefront + admin when client/ is present) and MongoDB.
+#   1. cp server/.env.example .env  and fill in PUBLIC_URL, JWT_SECRET, Razorpay and SMTP values
+#   2. docker compose up -d --build
+#   3. docker compose exec app node server/dist/seed.js        (add --demo for sample products)
+#   4. docker compose exec app node server/dist/create-admin.js --email you@store.in
+# Put a TLS-terminating reverse proxy (Caddy, Nginx, a load balancer) in front of port 4000.
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      MONGODB_URI: mongodb://mongo:27017/gold_shop
+      TRUST_PROXY: 1
+    ports:
+      - '4000:4000'
+    volumes:
+      - uploads:/app/server/uploads
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo:8.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ['CMD', 'mongosh', '--quiet', '--eval', 'db.runCommand({ ping: 1 }).ok']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  uploads:
+  mongo-data:
