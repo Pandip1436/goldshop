@@ -1,7 +1,7 @@
 # Deploying: Cloudflare Pages (storefront) + Google Cloud Run (API)
 
 ```
-Browser ──► Cloudflare Pages  (https://vijay-jewellers.pages.dev, later your own domain)
+Browser ──► Cloudflare Pages  (https://iniya-jewellers.pages.dev, later your own domain)
               ├─ /assets/*, icons ............. static files, straight from Pages
               ├─ pages (/, /product/…, …) ..... index.html + that page's SEO tags, fetched from the API
               └─ /api/*, /uploads/*, /sitemap.xml, /robots.txt ──► Cloud Run (Express API)
@@ -16,8 +16,8 @@ WhatsApp/Google previews work as they do on a single server. Don't point the bro
 address directly. The API refuses any request that doesn't carry `PROXY_SECRET`.
 
 Names used below (change them if you like): Google Cloud project `PROJECT_ID`, region `asia-south1`
-(Mumbai), Cloud Run service `vijay-jewellers-api`, bucket `vijay-jewellers-uploads` (bucket names are
-global, so add a suffix if it's taken), Pages project `vijay-jewellers`.
+(Mumbai), Cloud Run service `iniya-jewellers-api`, bucket `iniya-jewellers-uploads` (bucket names are
+global, so add a suffix if it's taken), Pages project `iniya-jewellers`.
 
 Commands are for **PowerShell** on Windows (a backtick `` ` `` continues a line; in bash use `\`).
 Use `curl.exe`, not `curl`.
@@ -58,8 +58,8 @@ this. Piping a value from PowerShell adds a line break to the secret.
 **Bucket for photos.** Copy the existing photos into it. The database refers to them by these paths.
 
 ```powershell
-gcloud storage buckets create gs://vijay-jewellers-uploads --location=asia-south1 --uniform-bucket-level-access
-gcloud storage cp -r "server/uploads/*" gs://vijay-jewellers-uploads/
+gcloud storage buckets create gs://iniya-jewellers-uploads --location=asia-south1 --uniform-bucket-level-access
+gcloud storage cp -r "server/uploads/*" gs://iniya-jewellers-uploads/
 ```
 
 **Permissions** for the service account that Cloud Run and Cloud Build use:
@@ -69,7 +69,7 @@ $PROJECT_NUMBER = gcloud projects describe PROJECT_ID --format="value(projectNum
 $SA = "serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com"
 gcloud projects add-iam-policy-binding PROJECT_ID --member=$SA --role=roles/secretmanager.secretAccessor
 gcloud projects add-iam-policy-binding PROJECT_ID --member=$SA --role=roles/run.builder
-gcloud storage buckets add-iam-policy-binding gs://vijay-jewellers-uploads --member=$SA --role=roles/storage.objectUser
+gcloud storage buckets add-iam-policy-binding gs://iniya-jewellers-uploads --member=$SA --role=roles/storage.objectUser
 ```
 
 ## 3. Deploy the API to Cloud Run
@@ -78,16 +78,16 @@ From the repository root. Cloud Build builds the `Dockerfile`, so you don't need
 `PUBLIC_URL` must be the address customers will use: the Pages address now, your domain later (step 6).
 
 ```powershell
-gcloud run deploy vijay-jewellers-api `
+gcloud run deploy iniya-jewellers-api `
   --source . `
   --region asia-south1 `
   --allow-unauthenticated `
   --memory 1Gi --cpu 1 --cpu-boost `
   --min-instances 0 --max-instances 3 `
   --execution-environment gen2 `
-  --add-volume "name=uploads,type=cloud-storage,bucket=vijay-jewellers-uploads,mount-options=uid=1000;gid=1000" `
+  --add-volume "name=uploads,type=cloud-storage,bucket=iniya-jewellers-uploads,mount-options=uid=1000;gid=1000" `
   --add-volume-mount "volume=uploads,mount-path=/app/server/uploads" `
-  --set-env-vars "NODE_ENV=production,TRUST_PROXY=1,PUBLIC_URL=https://vijay-jewellers.pages.dev" `
+  --set-env-vars "NODE_ENV=production,TRUST_PROXY=1,PUBLIC_URL=https://iniya-jewellers.pages.dev" `
   --set-secrets "MONGODB_URI=mongodb-uri:latest,JWT_SECRET=jwt-secret:latest,PROXY_SECRET=proxy-secret:latest,CRON_SECRET=cron-secret:latest"
 ```
 
@@ -95,7 +95,7 @@ gcloud run deploy vijay-jewellers-api `
 keeps everyone else out. The bucket is mounted where the app keeps uploads, with `uid=1000` so the app's
 `node` user can write to it.
 
-Note the service URL it prints (`https://vijay-jewellers-api-…a.run.app`), then check:
+Note the service URL it prints (`https://iniya-jewellers-api-…a.run.app`), then check:
 
 ```powershell
 curl.exe https://SERVICE_URL/api/health          # {"ok":true,"db":"connected"}
@@ -111,14 +111,14 @@ by unpaid orders, and retry unfinished order emails, therefore need a scheduler 
 every 5 minutes also keeps an instance warm, so fewer customers wait for a cold start.
 
 ```powershell
-gcloud scheduler jobs create http vijay-jewellers-jobs `
+gcloud scheduler jobs create http iniya-jewellers-jobs `
   --location asia-south1 `
   --schedule "*/5 * * * *" `
   --uri "https://SERVICE_URL/api/internal/jobs" `
   --http-method POST `
   --headers "x-cron-secret=CRON_SECRET_VALUE"
 
-gcloud scheduler jobs run vijay-jewellers-jobs --location asia-south1   # try it now
+gcloud scheduler jobs run iniya-jewellers-jobs --location asia-south1   # try it now
 ```
 
 ## 5. Deploy the storefront to Cloudflare Pages
@@ -127,10 +127,10 @@ gcloud scheduler jobs run vijay-jewellers-jobs --location asia-south1   # try it
 npm run build -w client
 cd client
 npx wrangler login
-npx wrangler pages project create vijay-jewellers --production-branch main
-npx wrangler pages secret put API_ORIGIN --project-name vijay-jewellers      # paste https://SERVICE_URL
-npx wrangler pages secret put PROXY_SECRET --project-name vijay-jewellers    # paste the proxy-secret value
-npx wrangler pages deploy dist --project-name vijay-jewellers --branch main
+npx wrangler pages project create iniya-jewellers --production-branch main
+npx wrangler pages secret put API_ORIGIN --project-name iniya-jewellers      # paste https://SERVICE_URL
+npx wrangler pages secret put PROXY_SECRET --project-name iniya-jewellers    # paste the proxy-secret value
+npx wrangler pages deploy dist --project-name iniya-jewellers --branch main
 cd ..
 ```
 
@@ -138,17 +138,17 @@ Run `wrangler pages deploy` from `client/` so that `client/functions/` is deploy
 `client/public/_routes.json` keeps `/assets/*` and the icons off the function. Variables only apply to
 deployments made after they are set, so if you change one, deploy again.
 
-Open `https://vijay-jewellers.pages.dev` and check that the home page shows products, a product page shows
+Open `https://iniya-jewellers.pages.dev` and check that the home page shows products, a product page shows
 photos, and you can sign in and open `/admin`. Admin accounts were copied to Atlas with the rest of the data.
 To add one, run `npm run create-admin -- --email you@store.in` locally with `MONGODB_URI` set to the Atlas URI.
 
 ## 6. Your own domain
 
-1. Pages → `vijay-jewellers` → **Custom domains** → add `www.yourdomain.in`. This is easiest when the
+1. Pages → `iniya-jewellers` → **Custom domains** → add `www.yourdomain.in`. This is easiest when the
    domain's DNS is on Cloudflare.
 2. Point the API at it. `PUBLIC_URL` is used for canonical links, the sitemap, email links and the CSRF check:
    ```powershell
-   gcloud run services update vijay-jewellers-api --region asia-south1 --update-env-vars PUBLIC_URL=https://www.yourdomain.in
+   gcloud run services update iniya-jewellers-api --region asia-south1 --update-env-vars PUBLIC_URL=https://www.yourdomain.in
    ```
 3. Razorpay webhook URL: `https://www.yourdomain.in/api/payments/razorpay/webhook` (see DEPLOYMENT.md §6).
 
@@ -159,8 +159,8 @@ Photos are kept in Cloudflare's cache after the first view. This may only take e
 Add them to the running service. Put secret values in Secret Manager first.
 
 ```powershell
-gcloud run services update vijay-jewellers-api --region asia-south1 `
-  --update-env-vars "RAZORPAY_KEY_ID=rzp_test_xxx,SMTP_HOST=smtp.example.com,SMTP_PORT=587,MAIL_FROM=Vijay Jewellers <orders@yourdomain.in>" `
+gcloud run services update iniya-jewellers-api --region asia-south1 `
+  --update-env-vars "RAZORPAY_KEY_ID=rzp_test_xxx,SMTP_HOST=smtp.example.com,SMTP_PORT=587,MAIL_FROM=Iniya Jewellers <orders@yourdomain.in>" `
   --update-secrets "RAZORPAY_KEY_SECRET=razorpay-key-secret:latest,RAZORPAY_WEBHOOK_SECRET=razorpay-webhook-secret:latest,SMTP_USER=smtp-user:latest,SMTP_PASS=smtp-pass:latest"
 ```
 
@@ -170,8 +170,8 @@ The full list of variables is in `server/.env.example` and [DEPLOYMENT.md](DEPLO
 
 | Changed | Run |
 | --- | --- |
-| Server code | `gcloud run deploy vijay-jewellers-api --source . --region asia-south1` (keeps all settings above) |
-| Storefront / admin | `npm run build -w client`, then from `client/`: `npx wrangler pages deploy dist --project-name vijay-jewellers --branch main` |
+| Server code | `gcloud run deploy iniya-jewellers-api --source . --region asia-south1` (keeps all settings above) |
+| Storefront / admin | `npm run build -w client`, then from `client/`: `npx wrangler pages deploy dist --project-name iniya-jewellers --branch main` |
 | Both | API first, then the storefront |
 
 ## 9. Limits and costs to know
@@ -185,14 +185,14 @@ The full list of variables is in `server/.env.example` and [DEPLOYMENT.md](DEPLO
 - **Several instances** (up to `--max-instances`): orders and payments are safe. The 15–60 second read
   cache and rate-limit counters are per instance (see DEPLOYMENT.md §8).
 - **Backups:** Atlas backs up the database. Back up the bucket too, e.g. turn on Object Versioning, or
-  run `gcloud storage cp -r gs://vijay-jewellers-uploads ./backup` from time to time.
+  run `gcloud storage cp -r gs://iniya-jewellers-uploads ./backup` from time to time.
 
 ## Troubleshooting
 
 | Symptom | Cause |
 | --- | --- |
 | Every page or API call: 403 "Requests must come through the storefront" | `PROXY_SECRET` differs between Pages and Cloud Run, or Pages wasn't redeployed after setting it. |
-| Saving or signing in: 403 "Request origin not allowed" | The address in the browser isn't `PUBLIC_URL`, e.g. a preview deployment (`abc123.vijay-jewellers.pages.dev`). Add it to `EXTRA_ORIGINS` on Cloud Run, or use the main address. |
+| Saving or signing in: 403 "Request origin not allowed" | The address in the browser isn't `PUBLIC_URL`, e.g. a preview deployment (`abc123.iniya-jewellers.pages.dev`). Add it to `EXTRA_ORIGINS` on Cloud Run, or use the main address. |
 | Photos missing | Photos weren't copied to the bucket, or the service account lacks `storage.objectUser`. |
 | Health check 503 | Atlas Network Access, or a wrong `mongodb-uri`. |
 | Unpaid orders keep holding stock | The Cloud Scheduler job isn't running, or `cron-secret` differs (check its last run in the console). |

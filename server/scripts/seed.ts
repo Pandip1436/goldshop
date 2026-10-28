@@ -109,13 +109,13 @@ async function seedSettings() {
   await Settings.create({
     key: 'store',
     store: {
-      name: 'Ponnagai',
+      name: 'Iniya Jewellers',
       tagline: 'Fine gold jewellery, priced in the open',
       description: 'Gold jewellery with transparent, rate-linked pricing: every piece shows its gold value, making charge and GST.',
     },
     displayRates: ['gold24', 'gold22', 'gold18'],
     tax: { gstRateBps: 300, hsnCode: '7113' },
-    checkout: { guestCheckout: true, orderPrefix: 'PN', codEnabled: false, codMaxOrderValue: 0, codFee: 0, returnWindowDays: 0 },
+    checkout: { guestCheckout: true, orderPrefix: 'IJ', codEnabled: false, codMaxOrderValue: 0, codFee: 0, returnWindowDays: 0 },
     shipping: { zones: [], fallbackEnabled: true, fallbackRate: 0, fallbackFreeAbove: 0, fallbackCod: false, fallbackEtaMin: 4, fallbackEtaMax: 8, note: '' },
     benefits: DEFAULT_BENEFITS,
     stats: [],
@@ -126,7 +126,7 @@ async function seedSettings() {
     // Left blank so page titles follow the store name, even after it is renamed.
     seo: { titleSuffix: '', defaultDescription: '' },
   });
-  log('Created store settings (placeholder brand "Ponnagai" — change it in Admin → Settings)');
+  log('Created store settings for Iniya Jewellers (change the name in Admin → Website settings)');
 }
 
 async function seedPages() {

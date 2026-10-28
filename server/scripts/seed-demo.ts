@@ -103,7 +103,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
       'A festive pair with a flower-shaped kundan top, a painted meenakari bell and a double fringe of pearls and green beads. Lightweight for its size, with comfortable screw backs.',
     specs: [['Stones', 'Kundan, seed pearls, green glass beads'], ['Finish', 'Meenakari enamel'], ['Closure', 'Screw back'], ['Length', 'Approx. 6.5 cm']],
     tags: ['jhumka', 'kundan', 'meenakari', 'festive', 'pearl'],
-    variants: [{ sku: 'PN-JH-001', weight: 18.6, stone: 6500, stock: 2 }],
+    variants: [{ sku: 'IJ-JH-001', weight: 18.6, stone: 6500, stock: 2 }],
     featured: true,
   },
   {
@@ -118,7 +118,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
       'Classic crescent-moon chandbalis with a kundan-set top, a pierced crescent and clusters of seed pearls. Made to frame the face on wedding days.',
     specs: [['Stones', 'Kundan, seed pearls, red stones'], ['Closure', 'Hook with support chain'], ['Length', 'Approx. 7 cm']],
     tags: ['chandbali', 'pearl', 'bridal', 'festive'],
-    variants: [{ sku: 'PN-CB-001', weight: 14.2, stone: 5200, stock: 1 }],
+    variants: [{ sku: 'IJ-CB-001', weight: 14.2, stone: 5200, stock: 1 }],
     featured: true,
   },
   {
@@ -132,7 +132,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'Shoulder-grazing danglers with a carved crescent drop and pearl chains that tuck into the hair — a traditional detail that also takes weight off the ear.',
     specs: [['Stones', 'Seed pearls, white stones'], ['Closure', 'Hook with ear chain'], ['Length', 'Approx. 9 cm']],
     tags: ['danglers', 'pearl', 'festive'],
-    variants: [{ sku: 'PN-DG-001', weight: 11.8, stone: 3800, stock: 2 }],
+    variants: [{ sku: 'IJ-DG-001', weight: 11.8, stone: 3800, stock: 2 }],
   },
   {
     name: 'Marigold Drop Earrings',
@@ -146,7 +146,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'Layered petals in high-polish 22K gold, hanging from a slim wire hoop. Light enough to wear every day.',
     specs: [['Closure', 'Wire hoop'], ['Length', 'Approx. 3 cm']],
     tags: ['drops', 'flower', 'everyday'],
-    variants: [{ sku: 'PN-DR-002', weight: 6.4, stock: 4 }],
+    variants: [{ sku: 'IJ-DR-002', weight: 6.4, stock: 4 }],
   },
   {
     name: 'Bud Drop Earrings',
@@ -159,7 +159,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A minimal drop with a ribbed bud and a curved hook — an easy first piece of gold.',
     specs: [['Closure', 'Hook'], ['Length', 'Approx. 2.2 cm']],
     tags: ['drops', 'minimal', 'everyday', 'gift'],
-    variants: [{ sku: 'PN-DR-003', weight: 2.9, stock: 6 }],
+    variants: [{ sku: 'IJ-DR-003', weight: 2.9, stock: 6 }],
   },
   {
     name: 'Mullai Arumbu Necklace',
@@ -173,7 +173,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
       'Named after the jasmine bud (mullai arumbu), this necklace lines up dozens of tapering gold buds into a bold collar. It sits close to the neck and ties with a black silk cord.',
     specs: [['Style', 'Mullai arumbu (jasmine bud)'], ['Closure', 'Silk cord tie'], ['Length', 'Adjustable, approx. 38–44 cm']],
     tags: ['temple', 'necklace', 'mullai', 'heritage', 'bridal'],
-    variants: [{ sku: 'PN-TN-001', weight: 38.5, stock: 1 }],
+    variants: [{ sku: 'IJ-TN-001', weight: 38.5, stock: 1 }],
     featured: true,
   },
   {
@@ -187,7 +187,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A South Indian kodi-style necklace of hollow gold barrels and radiating medallions with a central pendant, finished on a traditional black cord.',
     specs: [['Style', 'Kodi'], ['Closure', 'Cord tie'], ['Length', 'Approx. 46 cm']],
     tags: ['temple', 'kodi', 'heritage', 'necklace'],
-    variants: [{ sku: 'PN-TN-002', weight: 32, stock: 1 }],
+    variants: [{ sku: 'IJ-TN-002', weight: 32, stock: 1 }],
   },
   {
     name: 'Seven-Strand Haram',
@@ -200,7 +200,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A long ceremonial haram with seven graduated strands of hand-cut gold leaves, joined at a stone-set spacer and finished with a pearl drop.',
     specs: [['Stones', 'Rubies, pearl'], ['Closure', 'Hook'], ['Length', 'Approx. 60 cm']],
     tags: ['haram', 'long necklace', 'bridal', 'festive'],
-    variants: [{ sku: 'PN-HR-001', weight: 46, stone: 9000, stock: 1 }],
+    variants: [{ sku: 'IJ-HR-001', weight: 46, stone: 9000, stock: 1 }],
     featured: true,
   },
   {
@@ -214,7 +214,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A single strand of textured gold beads (gundu) with a matching pair of drop earrings, sold together as a set.',
     specs: [['Set includes', 'Necklace and pair of earrings'], ['Length', 'Approx. 50 cm']],
     tags: ['gundu', 'mala', 'set', 'heritage'],
-    variants: [{ sku: 'PN-GM-001', weight: 24, stock: 2 }],
+    variants: [{ sku: 'IJ-GM-001', weight: 24, stock: 2 }],
   },
   {
     name: 'Layered Coin Necklace',
@@ -227,7 +227,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A two-layer necklace in 18K gold with a small disc and a slim bar. Wear it alone or layer it with a longer chain.',
     specs: [['Chain', 'Cable chain'], ['Closure', 'Spring ring'], ['Length', '40 cm + 45 cm']],
     tags: ['layered', 'minimal', 'everyday', 'gift'],
-    variants: [{ sku: 'PN-CH-001', weight: 4.8, stock: 5 }],
+    variants: [{ sku: 'IJ-CH-001', weight: 4.8, stock: 5 }],
   },
   {
     name: 'Halo Circle Pendant Chain',
@@ -240,7 +240,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A small open circle that sits at the collarbone, on a fine chain with an adjustable extender.',
     specs: [['Chain', 'Cable chain with extender'], ['Length', 'Adjustable 40–45 cm']],
     tags: ['pendant', 'minimal', 'everyday', 'gift'],
-    variants: [{ sku: 'PN-CH-002', weight: 3.2, stock: 6 }],
+    variants: [{ sku: 'IJ-CH-002', weight: 3.2, stock: 6 }],
   },
   {
     name: 'Stone-Set Kada Bangle',
@@ -254,7 +254,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     specs: [['Stones', 'Cubic zirconia'], ['Width', 'Approx. 5 mm']],
     tags: ['kada', 'bangle', 'stones', 'festive'],
     optionNames: ['Size'],
-    variants: bangleSizes(12.5, 0.6, 'PN-BG-001', 1800),
+    variants: bangleSizes(12.5, 0.6, 'IJ-BG-001', 1800),
   },
   {
     name: 'Classic Plain Bangle',
@@ -268,7 +268,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     specs: [['Profile', 'Round wire'], ['Width', 'Approx. 2 mm']],
     tags: ['bangle', 'plain', 'everyday', 'stack'],
     optionNames: ['Size'],
-    variants: bangleSizes(6.2, 0.4, 'PN-BG-002'),
+    variants: bangleSizes(6.2, 0.4, 'IJ-BG-002'),
     featured: true,
   },
   {
@@ -282,7 +282,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A ready-made stack of three: a textured bangle, a stone-set bangle and an open arrow cuff, in 18K gold.',
     specs: [['Set includes', '3 bangles'], ['Stones', 'Cubic zirconia']],
     tags: ['bangle', 'stack', 'set', 'everyday'],
-    variants: [{ sku: 'PN-BG-003', weight: 9.6, stone: 1200, stock: 3 }],
+    variants: [{ sku: 'IJ-BG-003', weight: 9.6, stone: 1200, stock: 3 }],
   },
   {
     name: 'Crescent Moon Bracelet',
@@ -295,7 +295,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A delicate chain bracelet with a crescent-moon charm, adjustable to fit most wrists.',
     specs: [['Chain', 'Cable chain'], ['Length', 'Adjustable 16–19 cm']],
     tags: ['bracelet', 'moon', 'minimal', 'gift'],
-    variants: [{ sku: 'PN-BR-001', weight: 2.6, stock: 5 }],
+    variants: [{ sku: 'IJ-BR-001', weight: 2.6, stock: 5 }],
   },
   {
     name: 'Diamond Half-Eternity Band',
@@ -309,7 +309,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     specs: [['Diamonds', 'Round brilliant, approx. 0.25 ct total'], ['Band width', 'Approx. 2.5 mm']],
     tags: ['diamond', 'band', 'ring', 'anniversary'],
     optionNames: ['Size'],
-    variants: ringSizes(2.8, 0.2, 'PN-RG-001', 18500),
+    variants: ringSizes(2.8, 0.2, 'IJ-RG-001', 18500),
     featured: true,
   },
   {
@@ -324,7 +324,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     specs: [['Diamond', 'Round brilliant, approx. 0.30 ct'], ['Setting', 'Four prong']],
     tags: ['diamond', 'solitaire', 'ring', 'engagement'],
     optionNames: ['Size'],
-    variants: ringSizes(2.4, 0.15, 'PN-RG-002', 42000),
+    variants: ringSizes(2.4, 0.15, 'IJ-RG-002', 42000),
   },
   {
     name: 'Classic Wedding Bands',
@@ -337,7 +337,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A pair of rounded wedding bands in 22K gold with a comfort-fit inner edge. Sizes can be specified after ordering.',
     specs: [['Set includes', '2 rings'], ['Profile', 'Comfort fit'], ['Sizing', 'Confirmed after order']],
     tags: ['wedding', 'band', 'pair', 'ring'],
-    variants: [{ sku: 'PN-RG-003', weight: 9.2, stock: 3 }],
+    variants: [{ sku: 'IJ-RG-003', weight: 9.2, stock: 3 }],
   },
   {
     name: 'Antique Temple Ring',
@@ -350,7 +350,7 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     description: 'A bold, sculpted ring with an antique finish that brings out its relief work, finished with a single pearl.',
     specs: [['Finish', 'Antique'], ['Stones', 'Pearl']],
     tags: ['temple', 'ring', 'antique', 'heritage'],
-    variants: [{ sku: 'PN-RG-004', weight: 10.4, stone: 400, stock: 1 }],
+    variants: [{ sku: 'IJ-RG-004', weight: 10.4, stone: 400, stock: 1 }],
   },
   {
     name: '24K Gold Bar',
@@ -365,9 +365,9 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     tags: ['gold bar', '24k', 'investment', 'gift'],
     optionNames: ['Weight'],
     variants: [
-      { sku: 'PN-GB-1G', label: '1 g', attributes: { Weight: '1 g' }, weight: 1, stock: 10 },
-      { sku: 'PN-GB-5G', label: '5 g', attributes: { Weight: '5 g' }, weight: 5, stock: 5 },
-      { sku: 'PN-GB-10G', label: '10 g', attributes: { Weight: '10 g' }, weight: 10, stock: 3 },
+      { sku: 'IJ-GB-1G', label: '1 g', attributes: { Weight: '1 g' }, weight: 1, stock: 10 },
+      { sku: 'IJ-GB-5G', label: '5 g', attributes: { Weight: '5 g' }, weight: 5, stock: 5 },
+      { sku: 'IJ-GB-10G', label: '10 g', attributes: { Weight: '10 g' }, weight: 10, stock: 3 },
     ],
   },
 ];

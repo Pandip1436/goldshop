@@ -155,7 +155,7 @@ const settingsSchema = new Schema<ISettings>(
   {
     key: { type: String, default: 'store', unique: true },
     store: {
-      name: { type: String, default: 'Ponnagai' },
+      name: { type: String, default: 'Iniya Jewellers' },
       legalName: { type: String, default: '' },
       tagline: { type: String, default: 'Fine gold jewellery, priced in the open' },
       description: { type: String, default: '' },
@@ -187,7 +187,7 @@ const settingsSchema = new Schema<ISettings>(
     },
     checkout: {
       guestCheckout: { type: Boolean, default: true },
-      orderPrefix: { type: String, default: 'PN', maxlength: 4 },
+      orderPrefix: { type: String, default: 'IJ', maxlength: 4 },
       codEnabled: { type: Boolean, default: false },
       codMaxOrderValue: { type: Number, default: 0 },
       codFee: { type: Number, default: 0 },

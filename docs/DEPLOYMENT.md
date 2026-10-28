@@ -20,7 +20,7 @@ Copy `server/.env.example` and fill it in. The essentials:
 | Variable | Notes |
 | --- | --- |
 | `NODE_ENV=production` | Enables secure cookies, HSTS and production logging. |
-| `PUBLIC_URL` | **Required.** The public address, e.g. `https://www.vijayjewellers.in`. Used for canonical URLs, the sitemap, email links and the CSRF origin check. |
+| `PUBLIC_URL` | **Required.** The public address, e.g. `https://www.iniyajewellers.in`. Used for canonical URLs, the sitemap, email links and the CSRF origin check. |
 | `JWT_SECRET` | **Required.** At least 32 random characters: `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`. Changing it signs everyone out. |
 | `MONGODB_URI` | e.g. `mongodb+srv://user:pass@cluster.mongodb.net/gold_shop` |
 | `TRUST_PROXY` | Number of proxies in front of the app (default `1` in production) so client IPs and rate limits are correct. |
@@ -86,7 +86,7 @@ and Cloud Scheduler runs the background jobs. Step by step:
 Caddy (automatic certificates):
 
 ```
-www.vijayjewellers.in {
+www.iniyajewellers.in {
   reverse_proxy 127.0.0.1:4000
   request_body {
     max_size 60MB
