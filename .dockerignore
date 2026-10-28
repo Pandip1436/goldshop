@@ -1,7 +1,7 @@
 **/node_modules
 **/dist
-server/uploads
 server/uploads-e2e
+server/alt-uploads-e2e
 server/.test-uploads
 **/.env
 **/.env.*

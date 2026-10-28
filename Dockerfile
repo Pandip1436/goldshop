@@ -9,7 +9,7 @@ WORKDIR /app
 ENV MONGOMS_DISABLE_POSTINSTALL=1
 COPY . .
 RUN npm ci
-RUN npm run build && mkdir -p client/dist
+RUN npm run build && mkdir -p client/dist server/uploads
 
 # ---- runtime: server dependencies only ----
 FROM node:22-slim AS runtime
@@ -23,7 +23,10 @@ COPY --from=build /app/server/dist server/dist
 COPY --from=build /app/server/seed-assets server/seed-assets
 # empty in the API-only repository; the server then serves only the API
 COPY --from=build /app/client/dist client/dist
-RUN mkdir -p server/uploads && chown -R node:node server/uploads
+# The store's photos from the repository. Hosts without a persistent disk (Render's free plan) serve
+# these; photos uploaded there later are lost on the next restart or deploy. A Render Disk or Cloud
+# Storage bucket mounted at this path replaces them, so copy the photos onto it once.
+COPY --from=build --chown=node:node /app/server/uploads server/uploads
 USER node
 EXPOSE 4000
 VOLUME ["/app/server/uploads"]
